@@ -3,37 +3,940 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071f49">
 <title>Mobile Hub | Buy & Sell Mobile Phones</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui,sans-serif;background:#f6f9fd;color:#10233f}header{background:#06234a;color:#fff}.bar{display:flex;gap:18px;align-items:center;padding:14px 5%;flex-wrap:wrap}.logo{font-size:25px;font-weight:900}.logo span{color:#1590ff}.search{flex:1;min-width:230px}.search input{width:100%;padding:13px 18px;border:0;border-radius:25px;font-size:15px}.nav{display:flex;gap:22px;padding:0 5%;height:54px;align-items:center;border-top:1px solid #ffffff22;overflow:auto}.nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}.hero{background:linear-gradient(120deg,#06224a,#087ff5);color:#fff;padding:55px 5%}.hero h1{font-size:46px;line-height:1.05;margin:0 0 14px}.hero span{color:#8dd2ff}.hero p{color:#e5f2ff;font-size:17px}.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer}.blue{background:#087ff5;color:#fff}.green{background:#10bd67;color:#fff}.white{background:#fff;color:#075bc7}.wrap{max-width:1250px;margin:auto;padding:22px 5%}.brands{display:flex;gap:10px;overflow:auto}.brand{background:#fff;padding:15px 22px;border-radius:12px;font-weight:800;white-space:nowrap;border:1px solid #e1e9f2}.head{display:flex;justify-content:space-between;align-items:center;margin-top:25px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.card{background:#fff;border:1px solid #dce5ef;border-radius:13px;padding:12px}.pic{height:155px;border-radius:10px;background:linear-gradient(140deg,#eef4fa,#dce8f4);display:flex;align-items:center;justify-content:center}.phone{width:75px;height:125px;border:4px solid #182838;border-radius:15px;background:linear-gradient(140deg,#6b19dc,#28b9ff);position:relative}.phone:before{content:"";position:absolute;left:6px;top:7px;width:23px;height:23px;border-radius:7px;background:#111}.name{font-weight:850;margin-top:10px}.muted{color:#687c94;font-size:12px}.price{font-size:20px;font-weight:900;margin:6px 0}.panel{background:#fff;border:1px solid #dce5ef;border-radius:14px;padding:20px;margin-top:20px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{padding:11px;border:1px solid #d5e0ec;border-radius:9px}.field label{display:block;font-size:11px;color:#687c94}.field input,.field select{border:0;outline:0;width:100%;padding:5px}.full{grid-column:1/-1}.footer{margin-top:35px;background:#06234a;color:#fff;padding:30px 5%}@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.hero h1{font-size:35px}.grid{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:1fr}.full{grid-column:auto}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+ background:#f5f8fc;
+ color:#13243d
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.top{
+ background:#071f49;
+ color:white;
+ position:sticky;
+ top:0;
+ z-index:20;
+ box-shadow:0 2px 15px #0003
+}
+.bar{
+ max-width:1180px;
+ margin:auto;
+ padding:14px 18px;
+ display:flex;
+ align-items:center;
+ gap:15px
+}
+.logo{
+ font-size:25px;
+ font-weight:900;
+ color:white;
+ text-decoration:none;
+ white-space:nowrap
+}
+.logo span{color:#2d91ff}
+
+.search{
+ flex:1;
+ background:white;
+ border-radius:30px;
+ display:flex;
+ overflow:hidden
+}
+.search input{
+ width:100%;
+ border:0;
+ outline:0;
+ padding:13px 16px
+}
+.search button{
+ border:0;
+ background:white;
+ padding:0 15px
+}
+
+.cart{
+ border:0;
+ background:none;
+ color:white;
+ font-weight:900;
+ white-space:nowrap
+}
+
+nav{border-top:1px solid #ffffff22}
+.navin{
+ max-width:1180px;
+ margin:auto;
+ display:flex;
+ gap:5px;
+ padding:7px 18px;
+ overflow:auto
+}
+.navin a{
+ color:white;
+ text-decoration:none;
+ padding:11px 15px;
+ border-radius:10px;
+ font-weight:800;
+ white-space:nowrap
+}
+
+.hero{
+ background:linear-gradient(120deg,#071f49,#075fc7 65%,#1592ff);
+ color:white
+}
+.heroIn{
+ max-width:1180px;
+ margin:auto;
+ padding:60px 18px
+}
+.hero h1{
+ font-size:clamp(40px,7vw,70px);
+ line-height:.98;
+ margin:0 0 18px
+}
+.hero h1 span{color:#8fd2ff}
+.hero p{font-size:20px;line-height:1.5}
+
+.actions{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap;
+ margin-top:24px
+}
+
+.btn{
+ border:0;
+ border-radius:13px;
+ padding:13px 19px;
+ font-weight:900;
+ text-decoration:none;
+ display:inline-block
+}
+.white{background:white;color:#0758b9}
+.green{background:#16b86a;color:white}
+.dark{background:#071f49;color:white}
+.whatsapp{background:#25D366;color:white}
+
+.wrap{
+ max-width:1180px;
+ margin:auto;
+ padding:32px 18px
+}
+
+.brands{
+ display:flex;
+ gap:12px;
+ overflow:auto;
+ padding:3px 0 22px
+}
+.brand{
+ border:1px solid #dfe7f1;
+ background:white;
+ border-radius:14px;
+ padding:15px 25px;
+ font-weight:900;
+ white-space:nowrap
+}
+.brand.active{
+ border-color:#0878ff;
+ color:#0878ff
+}
+
+.head{
+ display:flex;
+ justify-content:space-between;
+ gap:15px;
+ align-items:end;
+ margin-bottom:18px
+}
+.head h2{margin:0;font-size:29px}
+.muted{color:#68778d}
+
+.grid{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:17px
+}
+
+.card{
+ background:white;
+ border:1px solid #dfe7f1;
+ border-radius:18px;
+ box-shadow:0 10px 30px #0a264e12;
+ padding:14px;
+ display:flex;
+ flex-direction:column
+}
+
+.phone{
+ height:210px;
+ border-radius:14px;
+ background:#eef3f9;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ overflow:hidden;
+ margin-bottom:13px
+}
+.phone img{
+ width:100%;
+ height:100%;
+ object-fit:contain
+}
+
+.card h3{margin:0 0 5px}
+.price{
+ font-size:20px;
+ font-weight:900;
+ margin:6px 0
+}
+.stock{
+ font-size:13px;
+ color:#15915a;
+ font-weight:800;
+ margin-bottom:12px
+}
+.card .btn{
+ width:100%;
+ margin-top:6px
+}
+
+.panel{
+ background:white;
+ border:1px solid #dfe7f1;
+ border-radius:18px;
+ box-shadow:0 10px 30px #0a264e12;
+ padding:23px;
+ margin-top:27px
+}
+
+.notice{
+ background:#eef6ff;
+ border:1px solid #cfe5ff;
+ border-radius:10px;
+ padding:12px;
+ margin-bottom:15px;
+ color:#20578f
+}
+
+.formgrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:14px
+}
+.field label{
+ display:block;
+ font-weight:800;
+ margin-bottom:6px
+}
+.field input,
+.field select,
+.field textarea{
+ width:100%;
+ border:1px solid #ccd7e5;
+ border-radius:10px;
+ padding:12px;
+ outline:0
+}
+.field textarea{min-height:100px}
+.full{grid-column:1/-1}
+
+.fee{
+ background:#fff7df;
+ border:1px solid #f2d27a;
+ padding:12px;
+ border-radius:10px;
+ margin:10px 0;
+ font-weight:800
+}
+
+footer{
+ background:#071f49;
+ color:#dce9ff;
+ margin-top:40px;
+ padding:30px 18px
+}
+.foot{
+ max-width:1180px;
+ margin:auto
+}
+.small{
+ font-size:13px;
+ color:#a9bddb
+}
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:#0008;
+ display:none;
+ align-items:end;
+ z-index:100
+}
+.modal.show{display:flex}
+.sheet{
+ background:white;
+ width:min(560px,100%);
+ padding:22px;
+ border-radius:20px 20px 0 0;
+ max-height:85vh;
+ overflow:auto
+}
+.sheethead{
+ display:flex;
+ justify-content:space-between;
+ align-items:center
+}
+.close{
+ border:0;
+ background:#eef2f7;
+ border-radius:50%;
+ width:38px;
+ height:38px;
+ font-size:22px
+}
+.row{
+ display:flex;
+ align-items:center;
+ gap:12px;
+ padding:12px 0;
+ border-bottom:1px solid #dfe7f1
+}
+.row .info{flex:1}
+.total{
+ display:flex;
+ justify-content:space-between;
+ font-size:20px;
+ font-weight:900;
+ padding:16px 0
+}
+.empty{
+ text-align:center;
+ padding:25px;
+ color:#68778d
+}
+
+.toast{
+ position:fixed;
+ bottom:20px;
+ left:50%;
+ transform:translate(-50%,20px);
+ background:#12233d;
+ color:white;
+ padding:12px 18px;
+ border-radius:12px;
+ opacity:0;
+ transition:.2s;
+ z-index:200
+}
+.toast.show{
+ opacity:1;
+ transform:translate(-50%,0)
+}
+
+@media(max-width:900px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .bar{flex-wrap:wrap}
+ .search{order:3;flex-basis:100%}
+}
+
+@media(max-width:560px){
+ .grid{gap:10px}
+ .phone{height:160px}
+ .card{padding:10px}
+ .card h3{font-size:16px}
+ .price{font-size:17px}
+ .formgrid{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ .head{
+  align-items:flex-start;
+  flex-direction:column
+ }
+}
 </style>
 </head>
+
 <body>
-<header>
-<div class="bar"><div class="logo">▣ <span>Mobile</span> Hub</div><div class="search"><input id="search" placeholder="Search mobile (e.g. iPhone 15, Samsung S23...)"></div><div>🛒 <b id="count">0</b></div></div>
-<nav class="nav"><a href="#home">Home</a><a href="#buy">Buy Mobile</a><a href="#sell">Sell Mobile</a><a href="#orders">My Orders</a></nav>
+
+<header class="top">
+<div class="bar">
+
+<a class="logo" href="#home">▣ <span>Mobile</span> Hub</a>
+
+<div class="search">
+<input id="search"
+placeholder="Search mobile e.g. iPhone 15, Samsung S24">
+<button onclick="searchNow()">🔎</button>
+</div>
+
+<button class="cart" onclick="openCart()">
+🛒 <span id="count">0</span>
+</button>
+
+</div>
+
+<nav>
+<div class="navin">
+<a href="#home">Home</a>
+<a href="#buy">Buy Mobile</a>
+<a href="#sell">Sell Mobile</a>
+<a href="#orders">My Orders</a>
+</div>
+</nav>
 </header>
-<section class="hero" id="home"><h1>Buy & Sell Mobile Phones<br><span>With Confidence</span></h1><p>Verified phones • Best prices • Trusted marketplace</p><button class="btn white" onclick="document.querySelector('#buy').scrollIntoView()">🛒 Buy Mobile</button> <button class="btn green" onclick="document.querySelector('#sell').scrollIntoView()">₹ Sell Mobile</button></section>
+
+
+<section class="hero" id="home">
+<div class="heroIn">
+
+<h1>
+Buy & Sell Mobile Phones<br>
+<span>With Confidence</span>
+</h1>
+
+<p>
+Verified phones • Best prices • Trusted marketplace
+</p>
+
+<div class="actions">
+<a class="btn white" href="#buy">🛒 Buy Mobile</a>
+<a class="btn green" href="#sell">₹ Sell Mobile</a>
+<a class="btn whatsapp"
+href="https://wa.me/919773001865?text=Hello%20Mobile%20Hub%2C%20I%20want%20to%20buy%20a%20mobile."
+target="_blank">
+💬 WhatsApp
+</a>
+</div>
+
+</div>
+</section>
+
+
 <main class="wrap">
-<div class="brands"><div class="brand">Apple</div><div class="brand">Samsung</div><div class="brand">OnePlus</div><div class="brand">Xiaomi</div><div class="brand">Realme</div><div class="brand">Oppo</div><div class="brand">Vivo</div></div>
-<section id="buy"><div class="head"><h2>🔥 Popular Mobiles</h2><span class="muted">Payments coming soon</span></div><div class="grid" id="products"></div></section>
-<section class="panel" id="sell"><h2>📱 Sell Your Mobile</h2><p class="muted">Submit your phone details. Payment will be added in the next phase.</p><div class="form">
-<div class="field"><label>Brand</label><select id="brand"><option>Apple</option><option>Samsung</option><option>OnePlus</option><option>Xiaomi</option><option>Realme</option><option>Oppo</option><option>Vivo</option></select></div>
-<div class="field"><label>Model</label><input id="model" placeholder="e.g. iPhone 14"></div>
-<div class="field"><label>Condition</label><select id="condition"><option>Like New</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div>
-<div class="field"><label>Expected Price</label><input id="price" type="number" placeholder="₹"></div>
-<div class="full"><button class="btn green" onclick="sell()">Publish Listing</button></div></div></section>
-<section class="panel" id="orders"><h2>🧾 My Orders</h2><p class="muted">Order accounts and online payments will be connected later.</p></section>
+
+<div class="brands">
+<button class="brand active" onclick="brand('All',this)">All</button>
+<button class="brand" onclick="brand('Apple',this)">Apple</button>
+<button class="brand" onclick="brand('Samsung',this)">Samsung</button>
+<button class="brand" onclick="brand('OnePlus',this)">OnePlus</button>
+<button class="brand" onclick="brand('Xiaomi',this)">Xiaomi</button>
+<button class="brand" onclick="brand('Google',this)">Google</button>
+</div>
+
+
+<section id="buy">
+
+<div class="head">
+<div>
+<h2>🔥 Popular Mobiles</h2>
+<div class="muted">
+Choose your mobile and add it to cart.
+</div>
+</div>
+</div>
+
+<div class="grid" id="products"></div>
+
+</section>
+
+
+<section class="panel" id="sell">
+
+<div class="head">
+<div>
+<h2>📱 Sell Your Mobile</h2>
+<div class="muted">
+Apna mobile sell karne ke liye details bharein.
+</div>
+</div>
+</div>
+
+<div class="fee">
+💰 Sell Mobile Service Fee: ₹99
+</div>
+
+<div class="formgrid">
+
+<div class="field">
+<label>Brand</label>
+<select id="sb">
+<option>Apple</option>
+<option>Samsung</option>
+<option>OnePlus</option>
+<option>Xiaomi</option>
+<option>Google</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="field">
+<label>Model</label>
+<input id="sm" placeholder="e.g. iPhone 13">
+</div>
+
+<div class="field">
+<label>Condition</label>
+<select id="sc">
+<option>Like New</option>
+<option>Good</option>
+<option>Fair</option>
+<option>Needs Repair</option>
+</select>
+</div>
+
+<div class="field">
+<label>Expected Price ₹</label>
+<input id="sp" type="number" placeholder="e.g. 30000">
+</div>
+
+<div class="field full">
+<label>Phone / WhatsApp Number</label>
+<input id="sn" type="tel" placeholder="10-digit number">
+</div>
+
+<div class="field full">
+<label>Extra Details</label>
+<textarea id="sd"
+placeholder="Storage, battery health, bill/box, accessories..."></textarea>
+</div>
+
+<div>
+<button class="btn green" onclick="sell()">
+📱 Submit Sell Request
+</button>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="panel" id="orders">
+
+<div class="head">
+<div>
+<h2>🧾 My Orders</h2>
+<div class="muted">
+Your orders are saved on this device.
+</div>
+</div>
+</div>
+
+<div id="ordersList"></div>
+
+</section>
+
 </main>
-<footer class="footer">🛡️ Genuine Phones &nbsp; • &nbsp; 🚚 Safe Delivery &nbsp; • &nbsp; 🎧 Customer Support<br><small>© 2026 Mobile Hub</small></footer>
+
+
+<footer>
+<div class="foot">
+
+<h3>🛡️ Mobile Hub</h3>
+
+<p>
+Genuine phones, transparent prices and a simple buy/sell experience.
+</p>
+
+<p>
+📲 WhatsApp:
+<a style="color:#25D366;font-weight:900"
+href="https://wa.me/919773001865"
+target="_blank">
+9773001865
+</a>
+</p>
+
+<div class="small">
+© 2026 Mobile Hub • COD Available • Sell Service ₹99
+</div>
+
+</div>
+</footer>
+
+
+<div class="modal" id="modal"
+onclick="if(event.target===this)closeCart()">
+
+<div class="sheet">
+
+<div class="sheethead">
+<h2>🛒 Your Cart</h2>
+<button class="close" onclick="closeCart()">×</button>
+</div>
+
+<div id="cart"></div>
+
+<div class="total">
+<span>Mobile Total</span>
+<span id="subtotal">₹0</span>
+</div>
+
+<div class="fee">
+🚚 COD / Cash on Delivery Charge: ₹99
+</div>
+
+<div class="total">
+<span>Final Total</span>
+<span id="total">₹99</span>
+</div>
+
+<button class="btn whatsapp"
+style="width:100%"
+onclick="checkout()">
+💬 Order on WhatsApp
+</button>
+
+</div>
+</div>
+
+
+<div class="toast" id="toast"></div>
+
+
 <script>
-const products=[["iPhone 15","Apple","₹64,999"],["Samsung Galaxy S23","Samsung","₹52,999"],["OnePlus Nord CE 3 Lite","OnePlus","₹24,999"],["Redmi Note 13","Xiaomi","₹16,999"],["Realme 11 Pro 5G","Realme","₹28,999"]];
-const box=document.getElementById("products");
-function render(a=products){box.innerHTML=a.map(p=>`<article class="card"><div class="pic"><div class="phone"></div></div><div class="name">${p[0]}</div><div class="muted">${p[1]} • Verified</div><div class="price">${p[2]}</div><button class="btn blue" style="width:100%" onclick="add()">Add to Cart</button><button class="btn" style="width:100%;margin-top:6px;background:#eef5ff;color:#075bc7" onclick="alert('Checkout is ready. Payment will be added later.')">Buy Now</button></article>`).join("")}
-function add(){document.getElementById("count").textContent=+document.getElementById("count").textContent+1}
-document.getElementById("search").oninput=e=>render(products.filter(p=>p.join(" ").toLowerCase().includes(e.target.value.toLowerCase())));
-function sell(){const m=document.getElementById("model").value.trim();const price=document.getElementById("price").value.trim();if(!m||!price)return alert("Please enter the model and expected price.");alert("Your listing has been submitted. Payment will be added later.")}
+
+const WA="919773001865";
+
+const P=[
+
+[
+"iPhone 15",
+"Apple",
+64999,
+"https://images.unsplash.com/photo-1696446701796-da61225697cc?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"Galaxy S24",
+"Samsung",
+59999,
+"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"OnePlus 12",
+"OnePlus",
+54999,
+"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"Pixel 8",
+"Google",
+49999,
+"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"iPhone 13",
+"Apple",
+44999,
+"https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"Galaxy A55",
+"Samsung",
+32999,
+"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"OnePlus 12R",
+"OnePlus",
+39999,
+"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+],
+
+[
+"Redmi Note 13 Pro",
+"Xiaomi",
+27999,
+"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"
+]
+
+];
+
+let B="All";
+let C=JSON.parse(localStorage.mhcart||"[]");
+
+const money=n=>"₹"+n.toLocaleString("en-IN");
+
+
+function render(){
+
+let q=(document.getElementById("search").value||"").toLowerCase();
+
+let a=P.map((p,i)=>({p,i}))
+.filter(x=>
+(B==="All"||x.p[1]===B) &&
+(!q ||
+x.p[0].toLowerCase().includes(q) ||
+x.p[1].toLowerCase().includes(q))
+);
+
+document.getElementById("products").innerHTML=a.length?
+
+a.map(x=>`
+
+<article class="card">
+
+<div class="phone">
+<img src="${x.p[3]}" alt="${x.p[0]}"
+onerror="this.style.display='none';this.parentElement.innerHTML='📱'">
+</div>
+
+<h3>${x.p[0]}</h3>
+
+<div class="muted">${x.p[1]} • Verified</div>
+
+<div class="price">${money(x.p[2])}</div>
+
+<div class="stock">✓ In stock</div>
+
+<button class="btn dark"
+onclick="add(${x.i})">
+🛒 Add to Cart
+</button>
+
+<a class="btn whatsapp"
+style="text-align:center"
+href="https://wa.me/${WA}?text=${encodeURIComponent(
+"Hello Mobile Hub, I want to buy "+x.p[0]+" for "+money(x.p[2])
+)}"
+target="_blank">
+💬 WhatsApp
+</a>
+
+</article>
+
+`).join("")
+
+:
+
+'<div class="empty" style="grid-column:1/-1">No mobile found.</div>';
+
+}
+
+
+function brand(b,e){
+
+B=b;
+
+document.querySelectorAll(".brand")
+.forEach(x=>x.classList.remove("active"));
+
+e.classList.add("active");
+
 render();
+
+}
+
+
+function searchNow(){
+
+render();
+
+document.getElementById("buy")
+.scrollIntoView({behavior:"smooth"});
+
+}
+
+
+document.getElementById("search").oninput=render;
+
+
+function save(){
+
+localStorage.mhcart=JSON.stringify(C);
+
+document.getElementById("count").textContent=
+C.reduce((a,x)=>a+x.q,0);
+
+}
+
+
+function add(i){
+
+let x=C.find(x=>x.i===i);
+
+x?x.q++:C.push({i,q:1});
+
+save();
+
+toast(P[i][0]+" added to cart");
+
+}
+
+
+function openCart(){
+
+drawCart();
+
+document.getElementById("modal")
+.classList.add("show");
+
+}
+
+
+function closeCart(){
+
+document.getElementById("modal")
+.classList.remove("show");
+
+}
+
+
+function drawCart(){
+
+let t=0;
+
+document.getElementById("cart").innerHTML=C.length?
+
+C.map(x=>{
+
+let p=P[x.i];
+
+t+=p[2]*x.q;
+
+return `
+
+<div class="row">
+
+<div style="font-size:35px">📱</div>
+
+<div class="info">
+<b>${p[0]}</b>
+<div>${money(p[2])}</div>
+</div>
+
+<div>${x.q} ×</div>
+
+</div>
+
+`;
+
+}).join("")
+
+:
+
+'<div class="empty">Your cart is empty.</div>';
+
+document.getElementById("subtotal").textContent=money(t);
+
+document.getElementById("total").textContent=money(t+99);
+
+}
+
+
+function checkout(){
+
+if(!C.length){
+
+toast("Cart is empty");
+
+return;
+
+}
+
+let message="Hello Mobile Hub,%0A%0AI want to place an order.%0A%0A";
+
+let t=0;
+
+C.forEach(x=>{
+
+let p=P[x.i];
+
+t+=p[2]*x.q;
+
+message+=
+"📱 "+p[0]+" × "+x.q+
+" = "+money(p[2]*x.q)+"%0A";
+
+});
+
+message+=
+"%0AMobile Total: "+money(t)+
+"%0ACOD Charge: ₹99"+
+"%0AFinal Total: "+money(t+99)+
+"%0A%0APlease confirm my order.";
+
+window.open(
+"https://wa.me/"+WA+"?text="+message,
+"_blank"
+);
+
+}
+
+
+function sell(){
+
+let brand=document.getElementById("sb").value;
+let model=document.getElementById("sm").value.trim();
+let condition=document.getElementById("sc").value;
+let price=document.getElementById("sp").value.trim();
+let phone=document.getElementById("sn").value.trim();
+let details=document.getElementById("sd").value.trim();
+
+if(!model||!phone){
+
+toast("Model aur WhatsApp number zaroor bharein");
+
+return;
+
+}
+
+let message=
+
+"Hello Mobile Hub,%0A%0A"+
+"📱 I want to sell my mobile.%0A%0A"+
+"Brand: "+brand+"%0A"+
+"Model: "+model+"%0A"+
+"Condition: "+condition+"%0A"+
+"Expected Price: ₹"+price+"%0A"+
+"Phone: "+phone+"%0A"+
+"Details: "+details+"%0A%0A"+
+"Sell Service Fee: ₹99";
+
+window.open(
+"https://wa.me/"+WA+"?text="+message,
+"_blank"
+);
+
+toast("WhatsApp open ho raha hai");
+
+}
+
+
+function toast(s){
+
+let t=document.getElementById("toast");
+
+t.textContent=s;
+
+t.classList.add("show");
+
+setTimeout(
+()=>t.classList.remove("show"),
+2200
+);
+
+}
+
+
+render();
+save();
+
 </script>
+
 </body>
 </html>
