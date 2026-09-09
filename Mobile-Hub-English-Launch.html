@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mobile Hub | Buy & Sell Mobile Phones</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,system-ui,sans-serif;background:#f6f9fd;color:#10233f}header{background:#06234a;color:#fff}.bar{display:flex;gap:18px;align-items:center;padding:14px 5%;flex-wrap:wrap}.logo{font-size:25px;font-weight:900}.logo span{color:#1590ff}.search{flex:1;min-width:230px}.search input{width:100%;padding:13px 18px;border:0;border-radius:25px;font-size:15px}.nav{display:flex;gap:22px;padding:0 5%;height:54px;align-items:center;border-top:1px solid #ffffff22;overflow:auto}.nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}.hero{background:linear-gradient(120deg,#06224a,#087ff5);color:#fff;padding:55px 5%}.hero h1{font-size:46px;line-height:1.05;margin:0 0 14px}.hero span{color:#8dd2ff}.hero p{color:#e5f2ff;font-size:17px}.btn{border:0;border-radius:10px;padding:12px 18px;font-weight:800;cursor:pointer}.blue{background:#087ff5;color:#fff}.green{background:#10bd67;color:#fff}.white{background:#fff;color:#075bc7}.wrap{max-width:1250px;margin:auto;padding:22px 5%}.brands{display:flex;gap:10px;overflow:auto}.brand{background:#fff;padding:15px 22px;border-radius:12px;font-weight:800;white-space:nowrap;border:1px solid #e1e9f2}.head{display:flex;justify-content:space-between;align-items:center;margin-top:25px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.card{background:#fff;border:1px solid #dce5ef;border-radius:13px;padding:12px}.pic{height:155px;border-radius:10px;background:linear-gradient(140deg,#eef4fa,#dce8f4);display:flex;align-items:center;justify-content:center}.phone{width:75px;height:125px;border:4px solid #182838;border-radius:15px;background:linear-gradient(140deg,#6b19dc,#28b9ff);position:relative}.phone:before{content:"";position:absolute;left:6px;top:7px;width:23px;height:23px;border-radius:7px;background:#111}.name{font-weight:850;margin-top:10px}.muted{color:#687c94;font-size:12px}.price{font-size:20px;font-weight:900;margin:6px 0}.panel{background:#fff;border:1px solid #dce5ef;border-radius:14px;padding:20px;margin-top:20px}.form{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{padding:11px;border:1px solid #d5e0ec;border-radius:9px}.field label{display:block;font-size:11px;color:#687c94}.field input,.field select{border:0;outline:0;width:100%;padding:5px}.full{grid-column:1/-1}.footer{margin-top:35px;background:#06234a;color:#fff;padding:30px 5%}@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}@media(max-width:600px){.hero h1{font-size:35px}.grid{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:1fr}.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<header>
+<div class="bar"><div class="logo">▣ <span>Mobile</span> Hub</div><div class="search"><input id="search" placeholder="Search mobile (e.g. iPhone 15, Samsung S23...)"></div><div>🛒 <b id="count">0</b></div></div>
+<nav class="nav"><a href="#home">Home</a><a href="#buy">Buy Mobile</a><a href="#sell">Sell Mobile</a><a href="#orders">My Orders</a></nav>
+</header>
+<section class="hero" id="home"><h1>Buy & Sell Mobile Phones<br><span>With Confidence</span></h1><p>Verified phones • Best prices • Trusted marketplace</p><button class="btn white" onclick="document.querySelector('#buy').scrollIntoView()">🛒 Buy Mobile</button> <button class="btn green" onclick="document.querySelector('#sell').scrollIntoView()">₹ Sell Mobile</button></section>
+<main class="wrap">
+<div class="brands"><div class="brand">Apple</div><div class="brand">Samsung</div><div class="brand">OnePlus</div><div class="brand">Xiaomi</div><div class="brand">Realme</div><div class="brand">Oppo</div><div class="brand">Vivo</div></div>
+<section id="buy"><div class="head"><h2>🔥 Popular Mobiles</h2><span class="muted">Payments coming soon</span></div><div class="grid" id="products"></div></section>
+<section class="panel" id="sell"><h2>📱 Sell Your Mobile</h2><p class="muted">Submit your phone details. Payment will be added in the next phase.</p><div class="form">
+<div class="field"><label>Brand</label><select id="brand"><option>Apple</option><option>Samsung</option><option>OnePlus</option><option>Xiaomi</option><option>Realme</option><option>Oppo</option><option>Vivo</option></select></div>
+<div class="field"><label>Model</label><input id="model" placeholder="e.g. iPhone 14"></div>
+<div class="field"><label>Condition</label><select id="condition"><option>Like New</option><option>Excellent</option><option>Good</option><option>Fair</option></select></div>
+<div class="field"><label>Expected Price</label><input id="price" type="number" placeholder="₹"></div>
+<div class="full"><button class="btn green" onclick="sell()">Publish Listing</button></div></div></section>
+<section class="panel" id="orders"><h2>🧾 My Orders</h2><p class="muted">Order accounts and online payments will be connected later.</p></section>
+</main>
+<footer class="footer">🛡️ Genuine Phones &nbsp; • &nbsp; 🚚 Safe Delivery &nbsp; • &nbsp; 🎧 Customer Support<br><small>© 2026 Mobile Hub</small></footer>
+<script>
+const products=[["iPhone 15","Apple","₹64,999"],["Samsung Galaxy S23","Samsung","₹52,999"],["OnePlus Nord CE 3 Lite","OnePlus","₹24,999"],["Redmi Note 13","Xiaomi","₹16,999"],["Realme 11 Pro 5G","Realme","₹28,999"]];
+const box=document.getElementById("products");
+function render(a=products){box.innerHTML=a.map(p=>`<article class="card"><div class="pic"><div class="phone"></div></div><div class="name">${p[0]}</div><div class="muted">${p[1]} • Verified</div><div class="price">${p[2]}</div><button class="btn blue" style="width:100%" onclick="add()">Add to Cart</button><button class="btn" style="width:100%;margin-top:6px;background:#eef5ff;color:#075bc7" onclick="alert('Checkout is ready. Payment will be added later.')">Buy Now</button></article>`).join("")}
+function add(){document.getElementById("count").textContent=+document.getElementById("count").textContent+1}
+document.getElementById("search").oninput=e=>render(products.filter(p=>p.join(" ").toLowerCase().includes(e.target.value.toLowerCase())));
+function sell(){const m=document.getElementById("model").value.trim();const price=document.getElementById("price").value.trim();if(!m||!price)return alert("Please enter the model and expected price.");alert("Your listing has been submitted. Payment will be added later.")}
+render();
+</script>
+</body>
+</html>
